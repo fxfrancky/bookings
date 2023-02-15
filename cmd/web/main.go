@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/fxfrancky/bookings/pkg/config"
-	"github.com/fxfrancky/bookings/pkg/handlers"
-	"github.com/fxfrancky/bookings/pkg/render"
+	"github.com/fxfrancky/bookings/internal/config"
+	"github.com/fxfrancky/bookings/internal/handlers"
+	"github.com/fxfrancky/bookings/internal/render"
 )
 
 var app config.AppConfig
