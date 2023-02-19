@@ -4,58 +4,70 @@
 <div class="container">
   <div class="row">
     <div class="col">
+       <!-- Come from handlers Reservation data["reservation"] -->
+      {{$res := index .Data "reservation"}}
+
       <h1 class="my-5">Make reservation</h1>
-      <form action="" method="post" class="needs-validation" novalidate>
+      <p><strong>Reservation Details</strong><br>
+      Room: {{$res.Room.RoomName}} <br>
+      Arrival: {{index .StringMap "start_date"}}<br>
+      Departure: {{index .StringMap "end_date"}}    
+      
+      </p>
+
+     
+      <!-- <form action="" method="post" class="needs-validation" novalidate> -->
+      <form action="/make-reservation" method="post" class="" novalidate>
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}" />
+        <input type="hidden" name="start_date" value="{{index .StringMap "start_date"}}" />
+        <input type="hidden" name="end_date" value="{{index .StringMap "end_date"}}" />
+        <input type="hidden" name="room_id" value="{{$res.RoomID}}">
+
         <div class="row mt-5">
           <div class="col">
             <label for="first_name" class="form-label">First name:</label>
-            <input
-              required
-              autocomplete="off"
-              type="text"
-              class="form-control"
-              id="first_name"
-              name="first_name"
-            />
+            {{with .Form.Errors.Get "first_name"}}
+            <label class="text-danger">{{.}}</label>
+            {{ end }}
+            <input required autocomplete="off" type="text" class="form-control
+            {{with .Form.Errors.Get "first_name"}} is-invalid {{ end }}"
+            id="first_name" name="first_name" value="{{ $res.FirstName }}" />
           </div>
         </div>
         <div class="row mt-3">
           <div class="col">
             <label for="last_name" class="form-label">Last name:</label>
-            <input
-              required
-              autocomplete="off"
-              type="text"
-              class="form-control"
-              id="last_name"
-              name="last_name"
-            />
+            {{with .Form.Errors.Get "last_name"}}
+            <label class="text-danger">{{.}}</label>
+            {{ end }}
+            <input required autocomplete="off" type="text" class="form-control
+            {{with .Form.Errors.Get "last_name"}} is-invalid {{ end }}"
+            id="last_name" name="last_name" value="{{ $res.LastName }}" />
           </div>
         </div>
+        
+
         <div class="row mt-3">
           <div class="col">
             <label for="email" class="form-label">Email:</label>
-            <input
-              required
-              autocomplete="off"
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-            />
+            {{with .Form.Errors.Get "email"}}
+            <label class="text-danger">{{.}}</label>
+            {{ end }}
+            <input required autocomplete="off" type="email" id="email"
+            class="form-control
+            {{with .Form.Errors.Get "email"}} is-invalid {{ end }}" name="email"
+            value="{{ $res.Email }}" />
           </div>
         </div>
         <div class="row mt-3 pb-3">
           <div class="col">
             <label for="phone" class="form-label">Phone Number:</label>
-            <input
-              required
-              autocomplete="off"
-              type="text"
-              class="form-control"
-              id="phone"
-              name="phone"
-            />
+            {{with .Form.Errors.Get "phone"}}
+            <label class="text-danger">{{.}}</label>
+            {{ end }}
+            <input autocomplete="off" type="text" class="form-control
+            {{with .Form.Errors.Get "phone"}} is-invalid {{ end }}" id="phone"
+            name="phone" value="{{ $res.Phone }}" />
           </div>
         </div>
         <hr class="py-3" />

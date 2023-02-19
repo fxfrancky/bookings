@@ -1,1 +1,6 @@
 .idea
+.vscode
+database.yml
+run.sh
+bookings
+coverage.out
