@@ -2,5 +2,6 @@
 .vscode
 database.yml
 run.sh
+update.sh
 bookings
 coverage.out
