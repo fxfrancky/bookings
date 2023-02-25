@@ -30,3 +30,22 @@ func TestSessionLoad(t *testing.T) {
 
 	}
 }
+
+// Generate Password
+// You can edit this code!
+// Click here and start typing.
+// package main
+
+// import (
+// 	"fmt"
+
+// 	"golang.org/x/crypto/bcrypt"
+// )
+
+// func main() {
+// 	pwd := "password"
+
+// 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(pwd), 12)
+
+// 	fmt.Println(string(hashedPassword))
+// }
